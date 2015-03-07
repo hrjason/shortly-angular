@@ -1,10 +1,13 @@
-<div id='container' class='creator'>
-  <form>
-   <input class='text' type='text' name='url'>
+<div id='shorten' class='creator'>
+
+  <h2>Create Shortly</h2>
+  <img class='spinner' src='assets/spiffygif_46x46.gif'>
+  <div class='message' ng-bind='message' ng-class='messageStyle'></div>
+  <form ng-submit="addLink()">
+    <input class='text' type='text' name='url' ng-model='url'>
     <input type='submit' value='Shorten'>
   </form>
-  <img class='spinner' src='/spiffygif_46x46.gif'>
-  <div class='message'></div>
+
 </div>
 
 

@@ -115,7 +115,8 @@ input[type=url]:focus {
 
 
 .error {
-  border: red solid 4px;
+  background-color: #fee;
+  color: #a33;
   padding: 10px;
   margin: 0 10px;
 }
@@ -145,4 +146,3 @@ input[type=url]:focus {
 .creator .message {
   clear: both;
 }
-
