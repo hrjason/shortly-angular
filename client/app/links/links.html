@@ -1,18 +1,21 @@
-<div id='container' class='link' ng-repeat='link in data.links'>
-  <img src='/assets/redirect_icon.png'/>
-    <div class='info'>
-    <div class='visits'>
-      <span class='count'>{{link.visits}}</span>
-      Visits
+<div id='container'>
+  <input type="search" ng-model="question" placeholder="Filter links" />
+  <div class='link' ng-repeat='link in data.links | orderBy: "-visits" | filter:question'>
+    <img src='/assets/redirect_icon.png'/>
+      <div class='info'>
+      <div class='visits'>
+        <span class='count'>{{link.visits}}</span>
+        Visits
+      </div>
+    <div class='title'>
+      {{link.title}}
     </div>
-  <div class='title'>
-    {{link.title}}
-  </div>
-  <div class='original'>
-    {{link.url}}
-  </div>
-  <a href='{{link.base_url}}/{{link.code}}'>
-    {{link.base_url}}/{{link.code}}
-  </a>
+    <div class='original'>
+      {{link.url}}
+    </div>
+    <a href='{{link.base_url}}/{{link.code}}'>
+      {{link.base_url}}/{{link.code}}
+    </a>
+    </div>
   </div>
 </div>

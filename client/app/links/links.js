@@ -10,14 +10,8 @@ angular.module('shortly.links', [])
     Links.getLinks()
       .then(function (links) {
         console.log(links);
-        console.log($scope.data.links);
-        $scope.data.links = links;
-        // $window.localStorage.setItem('com.shortly', link);
-        // $location.path('/links');
+        $scope.data.links = links.data;
       })
-      .catch(function (error) {
-        console.error(error);
-      });
   };
 
   $scope.getLinks();

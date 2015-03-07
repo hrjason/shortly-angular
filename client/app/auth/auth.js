@@ -3,7 +3,8 @@
 // in our signup/signin forms using the injected Auth service
 angular.module('shortly.auth', [])
 
-.controller('AuthController', function ($scope, $window, $location, Auth) {
+.controller('AuthController', function ($scope, $window, $location, $timeout, Auth) {
+  $scope.messageStyle = '';
   $scope.user = {};
 
   $scope.signin = function () {
@@ -14,6 +15,13 @@ angular.module('shortly.auth', [])
       })
       .catch(function (error) {
         console.error(error);
+        $scope.message = 'Username or Password is incorrect!';
+        // console.log($scope.message);
+        $scope.messageStyle = 'error';
+        $timeout(function(){
+          $scope.message = '';
+          $scope.messageStyle = '';
+        }, 3500);
       });
   };
 
@@ -25,6 +33,13 @@ angular.module('shortly.auth', [])
       })
       .catch(function (error) {
         console.error(error);
+        $scope.message = 'Username is taken!';
+        // console.log($scope.message);
+        $scope.messageStyle = 'error';
+        $timeout(function(){
+          $scope.message = '';
+          $scope.messageStyle = '';
+        }, 3500);
       });
   };
 });
