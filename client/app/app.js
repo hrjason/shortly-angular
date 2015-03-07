@@ -19,14 +19,50 @@ angular.module('shortly', [
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
     })
+    .when('/logout', {
+      templateUrl: 'app/auth/signin.html',
+      controller: 'AuthController'
+    })
     // Your code here
     .when('/links', {
       templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
+      controller: 'LinksController',
+      // authenticate: true
+      resolve: {
+        auth: ["$q", "Auth", function($q, Auth){
+          var token = Auth.isAuth();
+          if(token){
+            return $q.when(true);
+          }  else {
+            console.log('access denied');
+            return $q.reject({ authenticate: false });
+          }
+        }]
+      }
     })
     .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
-      controller: 'ShortenController'
+      controller: 'ShortenController',
+      resolve: {
+        auth: ["$q", "Auth", function($q, Auth){
+          var token = Auth.isAuth();
+          if(token){
+            return $q.when(true);
+          }  else {
+            console.log('access denied');
+            return $q.reject({ authenticated: false });
+          }
+        }]
+      }
+    })
+    .when('/logout', {
+      templateUrl: 'app/auth/signin.html',
+      controller: 'AuthController',
+      resolve: {
+        auth: ["$q", "Auth", function($q, Auth){
+          var signout = Auth.signout();
+        }]
+      }
     })
     .otherwise({
       templateUrl: 'app/links/links.html',
