@@ -1,3 +1,30 @@
-<div id='container'>
-  <!-- Your html here -->
+<div id='container' class='link' ng-repeat='link in data'>
+  <img src='/assets/redirect_icon.png'/>
+    <div class='info'>
+    <div class='visits'>
+      <span class='count'>{{link.visits}}</span>
+      Visits
+    </div>
+  <div class='title'>
+    {{link.title}}
+  </div>
+  <div class='original'>
+    {{link.url}}
+  </div>
+  <a href='http://{{link.base_url}}/{{link.code}}'>
+    {{link.base_url}}/{{link.code}}
+  </a>
+  </div>
 </div>
+
+<!-- old code
+<div id='signin'>
+  <h2>Sign In</h2>
+  <form name="signinForm" ng-submit='signin()'>
+    <input type='text'ng-model='user.username'>
+    <input type="password" ng-model='user.password'>
+    <button>signin</button>
+  </form>
+  <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
+</div>
+ -->
