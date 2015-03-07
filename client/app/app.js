@@ -35,7 +35,7 @@ angular.module('shortly', [
             return $q.when(true);
           }  else {
             console.log('access denied');
-            return $q.reject({ authenticate: false });
+            return $q.reject({ authenticate: true });
           }
         }]
       }
@@ -50,7 +50,7 @@ angular.module('shortly', [
             return $q.when(true);
           }  else {
             console.log('access denied');
-            return $q.reject({ authenticated: false });
+            return $q.reject({ authenticate: true });
           }
         }]
       }
